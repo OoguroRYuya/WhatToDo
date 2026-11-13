@@ -1,0 +1,30 @@
+[
+ {
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "dose",
+  "axes": "light/grotesk-sans/chromatic-green",
+  "hero": "none (app scope)",
+  "nav": "bottom tabs: Today, Account; editor as modal stack",
+  "footer": "none (app scope)",
+  "imagery": "none",
+  "photos": [],
+  "entry": "src/theme/tokens.ts",
+  "fingerprint": "dose-app-todo-notes-syncstamp",
+  "sections": [
+   "sign-in",
+   "today: date head + sync stamp, quote tray, three figures, To-do/Notes tabs, list",
+   "editor: to-do or note, PIN lock",
+   "account: details, backup tray, sign out"
+  ],
+  "signature": "sync stamp: double-ringed pharmacy stamp, green when backed up, grey when changes wait",
+  "waived": [
+   "26a",
+   "26b",
+   "48"
+  ],
+  "prompt": "Offline-first to-do and notes mobile app (Expo) with Firebase backup, daily quote API, PIN-encrypted secret notes",
+  "date": "2026-11-13",
+  "mode": "build"
+ }
+]

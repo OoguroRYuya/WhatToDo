@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Each user can read and write only their own backup: users/{uid}/todos/* and users/{uid}/notes/*.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid}/{collection}/{docId} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid
+                          && collection in ['todos', 'notes'];
+      allow create, update: if request.auth != null && request.auth.uid == uid
+                            && collection in ['todos', 'notes']
+                            && request.resource.data.title is string
+                            && request.resource.data.title.size() <= 120
+                            && request.resource.data.updated_at is string
+                            && request.resource.data.is_deleted is bool
+                            && (collection != 'notes' || request.resource.data.content.size() <= 300000);
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
